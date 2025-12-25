@@ -1,17 +1,17 @@
-FROM node:18
+FROM node:22
 
-RUN apt-get update && apt-get install -y graphicsmagick && apt-get clean
+RUN apt-get update \
+    && apt-get install -y graphicsmagick \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
-RUN npm install
-COPY . /app
+COPY package*.json ./
+RUN npm ci --omit=dev
 
-VOLUME [ "/app/credentials" ]
-VOLUME [ "/app/instances" ]
-VOLUME [ "/app/logs" ]
-VOLUME [ "/app/maps" ]
+COPY . .
+
+VOLUME [ "/app/credentials", "/app/instances", "/app/logs", "/app/maps" ]
 
 CMD ["npm", "start"]
