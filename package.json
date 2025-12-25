@@ -24,10 +24,12 @@
         "@formatjs/intl": "^2.6.9",
         "@liamcottle/push-receiver": "^0.0.4",
         "@liamcottle/rustplus.js": "git+https://github.com/alexemanuelol/rustplus.js.git#089cfd3db1b04709911948bce669273139c6a124",
+        "amqplib": "0.10.9",
         "axios": "^1.3.4",
         "colors": "^1.4.0",
         "discord-api-types": "^0.38.14",
         "discord.js": "^14.21.0",
+        "dotenv": "17.2.3",
         "ffmpeg-static": "^5.1.0",
         "gm": "^1.25.0",
         "jimp": "^0.22.7",
@@ -41,5 +43,8 @@
     "resolutions": {
         "jpeg-js": "0.4.4",
         "protobufjs": "7.2.4"
+    },
+    "devDependencies": {
+        "@types/amqplib": "0.10.8"
     }
 }

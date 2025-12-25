@@ -169,6 +169,8 @@ class DiscordBot extends Discord.Client {
     }
 
     build() {
+        console.log("ENV VARIABLES:\n", Config);
+
         this.login(Config.discord.token).catch(error => {
             switch (error.code) {
                 case 502: {

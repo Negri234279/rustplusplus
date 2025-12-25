@@ -28,6 +28,7 @@ const DiscordEmbeds = require('./discordEmbeds.js');
 const DiscordSelectMenus = require('./discordSelectMenus.js');
 const DiscordTools = require('./discordTools.js');
 const Scrape = require('../util/scrape.js');
+const { sendAlarmToBackend } = require('../util/rabbitmq.js')
 
 module.exports = {
     sendMessage: async function (guildId, content, messageId, channelId, interaction = null) {
@@ -120,6 +121,8 @@ module.exports = {
     sendSmartAlarmMessage: async function (guildId, serverId, entityId, interaction = null) {
         const instance = Client.client.getInstance(guildId);
         const entity = instance.serverList[serverId].alarms[entityId];
+
+        await sendAlarmToBackend(entity);
 
         const content = {
             embeds: [entity.reachable ?

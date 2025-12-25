@@ -17,6 +17,7 @@
     https://github.com/alexemanuelol/rustplusplus
 
 */
+require('dotenv').config({ quiet: true })
 
 const Discord = require('discord.js');
 const Fs = require('fs');
