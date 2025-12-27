@@ -14,6 +14,9 @@ async function requiresRabbit() {
         port: parseInt(process.env.RABBITMQ_PORT || "5672"),
         username: process.env.RABBITMQ_USER || "guest",
         password: process.env.RABBITMQ_PASSWORD || "guest",
+        clientProperties: {
+            connection_name: process.env.RABBITMQ_CONNECTION_NAME || "rpp-service",
+        }
     })
 
     channel = await conn.createChannel()
